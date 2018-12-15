@@ -1,0 +1,14 @@
+---
+- hosts: webserver
+  tasks:
+  - shell: echo "Hello world!"
+  - name: install apache latest version
+    yum:
+      name: httpd
+      state: latest
+    become: yes
+  - name: Ensure httpd is running
+    service: 
+      name: httpd
+      state: started
+    become: yes
